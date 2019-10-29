@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0)
+            return false;
+        long xx = 0;
+        int y=x;
+        while(x>0) {
+            xx=xx*10+x%10;
+            x/=10;
+        }
+        if(xx>=Integer.MAX_VALUE)
+            return false;
+        return ((int)xx)==y;
+        // List<Integer> al = new ArrayList<Integer>();
+        // while(x>0) {
+        //     al.add(x%10);
+        //     x/=10;
+        // }
+        // return isPal(al, 0, al.size()-1);
+    }
+    private boolean isPal(List<Integer> al, int l, int r) {
+        if(l>=r) return true;
+        return al.get(l)==al.get(r) && isPal(al, l+1, r-1);
+    }
+}
